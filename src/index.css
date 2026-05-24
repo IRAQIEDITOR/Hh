@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Tajawal", "Cairo", system-ui, -apple-system, sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f1f5f9;
+  color: #1e293b;
+  direction: rtl; /* Set default RTL for Arabic support */
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide UI elements like control inputs, presets sidebar, buttons */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Make sure the receipt matches A4 perfectly in print mode */
+  .print-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Keep backgrounds and watermarks visible during printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Prevent page breaks inside the receipt */
+  .receipt-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0.8cm;
+  }
+}
+
+/* Custom pattern for background invoice texture in editing mode */
+.bg-invoice-paper {
+  background-color: #ffffff;
+  background-image: radial-gradient(#3b82f612 1px, transparent 1px);
+  background-size: 20px 20px;
+}
